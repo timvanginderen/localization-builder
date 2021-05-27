@@ -7,7 +7,7 @@ import 'package:yaml/yaml.dart';
 void main() {
   group('StringValue', () {
     group('generateMethodName', () {
-      StringValue testAppMethod;
+      late StringValue testAppMethod;
       setUp(() {
         final testMap = {
           "common": {"appName": "TestApp"}
