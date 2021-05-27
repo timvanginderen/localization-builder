@@ -1,5 +1,3 @@
-
-
-String joinSingleQuoted(Iterable<String> strings) {
-  return strings.map((s)=>"'$s'").join(",");
+String joinSingleQuoted(Iterable<String?> strings) {
+  return strings.map((s) => "'$s'").join(",");
 }

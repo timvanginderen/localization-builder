@@ -8,7 +8,7 @@ import '../util/generator_utils.dart';
 
 class AppLocalizationsDartBuilder {
   String buildDartFile(String name, Strings strings,
-      List<String> supportedLocals, SeparatorStyle separatorStyle) {
+      List<String?> supportedLocals, SeparatorStyle separatorStyle) {
     final lib = Library((b) => b.body.addAll([
           _AppLocalizationsBuilder(name).build(strings, separatorStyle),
           _AppLocalizationsDelegateBuilder(name).build(supportedLocals),
@@ -22,7 +22,7 @@ class _AppLocalizationsDelegateBuilder {
   final String appLocalizationsClassName;
 
   _AppLocalizationsDelegateBuilder(this.appLocalizationsClassName);
-  Class build(List<String> supportedLocals) {
+  Class build(List<String?> supportedLocals) {
     return Class((b) => b
       ..name = '${appLocalizationsClassName}Delegate'
       ..extend = refer('LocalizationsDelegate<$appLocalizationsClassName>')
@@ -45,7 +45,7 @@ class _AppLocalizationsDelegateBuilder {
       ..annotations.add(refer("override")));
   }
 
-  Method createIsSupportedMethod(List<String> supportedLocals) {
+  Method createIsSupportedMethod(List<String?> supportedLocals) {
     return Method((b) => b
       ..name = 'isSupported'
       ..returns = refer('bool')

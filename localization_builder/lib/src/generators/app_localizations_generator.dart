@@ -2,7 +2,6 @@ import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
 import 'package:glob/glob.dart';
 import 'package:localization_annotation/localization_annotation.dart';
-
 import 'package:source_gen/source_gen.dart';
 import 'package:yaml/yaml.dart';
 
@@ -43,7 +42,7 @@ class AppLocalizationsGenerator
       Element element, ConstantReader annotation, BuildStep buildStep) async {
     final yamlStringsPath =
         readParam(annotation, 'yamlStringsPath').stringValue;
-    final List<String> supportedLocals =
+    final List<String?> supportedLocals =
         readParam(annotation, 'supportedLocals')
             .listValue
             .map((x) => x.toStringValue())
