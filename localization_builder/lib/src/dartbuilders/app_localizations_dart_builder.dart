@@ -162,16 +162,13 @@ class _StringsBuilder {
   }
 
   Method _createMethod(StringValue child) {
-    return Method((MethodBuilder b) {
-      b
-        ..name = child.generateMethodName(separatorStyle)
-        ..returns = refer("String")
-        ..lambda = true
-        ..type = child.args.isNotEmpty ? null : MethodType.getter
-        ..body = Code(createIntlCodeBody(child))
-        ..requiredParameters.addAll(_toParams(child.args));
-      // return b;
-    });
+    return Method((MethodBuilder b) => b
+      ..name = child.generateMethodName(separatorStyle)
+      ..returns = refer("String")
+      ..lambda = true
+      ..type = child.args.isNotEmpty ? null : MethodType.getter
+      ..body = Code(createIntlCodeBody(child))
+      ..requiredParameters.addAll(_toParams(child.args)));
   }
 
   Iterable<Parameter> _toParams(List<StringValueArg> args) {
